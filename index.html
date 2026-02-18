@@ -1,429 +1,517 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NetFlix | Movie Platform</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NetFlix | Movie Platform</title>
+    <meta name="description"
+        content="Netflix India — watch unlimited movies, series and documentaries anytime, anywhere.">
 
-
-<link href="https://cdn.jsdelivr.Pnet/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-<link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-black px-4">
-    <a class="navbar-brand fw-bold text-danger fs-2" href="#">NETFLIX</a>
-
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="menu">
-        <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Movies</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Series</a></li>
-            <li class="nav-item"><a class="btn btn-danger ms-3" href="#">Sign In</a></li>
-        </ul>
-    </div>
-</nav>
-
-<header class="hero-section text-white d-flex align-items-center">
-    <div class="container text-center">
-        <h1 class="display-4 fw-bold">Unlimited Entertainment</h1>
-        <p class="lead">Watch movies and shows anytime, anywhere.</p>
-        <button class="btn btn-danger btn-lg">Join Now</button>
-    </div>
-</header>
-
-
-
-<section class="container-fluid py-5 slider-section">
-    <h3 class="text-white px-4 d-flex align-items-center gap-2"><span></span> Popular on NETFLIX</h3>
-    <div class="movie-slider px-4">
-        <div class="movie-item">
-            <img src="./images/movie1.webp" alt="Movie">
-            <div class="movie-badge">New</div>
-        </div>
-        <div class="movie-item">
-            <img src="./images/movie4.webp" alt="Movie">
-            <div class="movie-badge">Top 10</div>
-        </div>
-        <div class="movie-item">
-            <img src="./images/movie7.webp" alt="Movie">
-        </div>
-        <div class="movie-item">
-            <img src="./images/movie9.webp" alt="Movie">
-            <div class="movie-badge">Trending</div>
-        </div>
-        <div class="movie-item">
-            <img src="./images/movie3.webp" alt="Movie">
-        </div>
-        <div class="movie-item">
-            <img src="./images/movie8.webp" alt="Movie">
-            <div class="movie-badge">Top 10</div>
-        </div>
-        <div class="movie-item">
-            <img src="./images/movie2.webp" alt="Movie">
-        </div>
-        <div class="movie-item">
-            <img src="./images/movie5.webp" alt="Movie">
-        </div>
-        <div class="movie-item">
-            <img src="./images/movei6.webp" alt="Movie">
-            <div class="movie-badge">New</div>
-        </div>
-        <div class="movie-item">
-            <img src="./images/movie10.webp" alt="Movie">
+    <!-- ============================================================
+     CUSTOM MODAL  (Feature 1 — Button Click Interaction)
+     ============================================================ -->
+    <div id="customModal" class="custom-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="custom-modal-box">
+            <button id="modalCloseBtn" class="modal-close-btn" aria-label="Close">&times;</button>
+            <h3 id="modalTitle" class="modal-title"></h3>
+            <p id="modalMessage" class="modal-message"></p>
+            <button class="btn btn-danger mt-3" onclick="closeModal()">Got it!</button>
         </div>
     </div>
-</section>
 
 
-<section class="container-fluid pb-5 slider-section">
-    <h3 class="text-white px-4 d-flex align-items-center gap-2"><span></span> Trending Now</h3>
-    <div class="movie-slider px-4">
-        <div class="movie-item">
-            <img src="./images/m1.jpg" alt="Movie">
-            <div class="movie-badge">Trending</div>
-        </div>
-        <div class="movie-item">
-            <img src="./images/m2.jpg" alt="Movie">
-            <div class="movie-badge">Top 5</div>
-        </div>
-        <div class="movie-item">
-            <img src="./images/m9.jpg" alt="Movie">
-        </div>
-        <div class="movie-item">
-            <img src="./images/m8.webp" alt="Movie">
-            <div class="movie-badge">Top 5</div>
-        </div>
-        <div class="movie-item">
-            <img src="./images/m10.jpg" alt="Movie">
-        </div>
-    </div>
-</section>
+    <!-- ============================================================
+     NAVBAR  (Feature 5 — Interactive Navigation)
+     ============================================================ -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-black px-4" id="mainNavbar">
+        <a class="navbar-brand fw-bold text-danger fs-2" href="#">NETFLIX</a>
 
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu"
+            aria-controls="menu" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-<section class="container py-5">
-  <h2 class="section-title mb-4">🎬 Tonight’s Pick</h2>
-
-  <div class="pick-card-upgraded d-flex align-items-center gap-4 position-relative">
-    <div class="badge-trending position-absolute" style="top:15px;right:15px">🔥 TRENDING</div>
-    <img src="./images/movie7.webp" alt="Jolly LLB 3 poster" class="pick-poster">
-
-    <div class="pick-content">
-      <div class="d-flex align-items-center gap-2 mb-2">
-        <h3 style="margin:0">Jolly LLB 3</h3>
-        <span class="badge-rating">⭐ 8.2/10</span>
-      </div>
-      
-      <div class="d-flex gap-2 mb-3">
-        <span class="badge-quality">4K</span>
-        <span class="badge-quality">HD</span>
-        <span class="badge-quality">Dolby</span>
-      </div>
-      
-      <p class="text-muted">
-        "A sharp-witted lawyer returns to the courtroom to fight corruption, challenge powerful forces, and prove that justice can still prevail."
-      </p>
-
-      <div class="d-flex gap-3 mt-3">
-        <button class="btn btn-danger btn-lg">▶ Watch Now</button>
-        <button class="btn btn-outline-light btn-lg">+ My List</button>
-      </div>
-      
-      <div class="mt-3 d-flex gap-3">
-        <div class="text-info small">📺 Drama, Thriller</div>
-        <div class="text-info small">⏱ 2h 15m</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="container py-5 featured-collections">
-  <h2 class="section-title mb-5">Featured Collections</h2>
-  
-  <div class="row g-4">
-    
-    <div class="col-md-6 col-lg-3">
-      <div class="collection-card">
-        <img src="./images/image2.jpg" alt="Award Winners Collection" class="collection-img">
-        <div class="collection-overlay">
-          <h4>Award Winners</h4>
-          <p>Oscar & BAFTA Nominated Hits</p>
-          <button class="btn btn-sm btn-danger">Explore →</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-6 col-lg-3">
-      <div class="collection-card">
-        <img src="/images/image1.jpg" alt="International Hits" class="collection-img">
-        <div class="collection-overlay">
-          <h4>International Hits</h4>
-          <p>World Cinema Excellence</p>
-          <button class="btn btn-sm btn-danger">Explore →</button>
-        </div>
-      </div>
-    </div>
-
-    
-    <div class="col-md-6 col-lg-3">
-      <div class="collection-card">
-        <img src="/images/image4.jpg" alt="Comedy Night" class="collection-img">
-        <div class="collection-overlay">
-          <h4>Comedy Night</h4>
-          <p>Laugh Out Loud Collection</p>
-          <button class="btn btn-sm btn-danger">Explore →</button>
-        </div>
-      </div>
-    </div>
-
-
-    <div class="col-md-6 col-lg-3">
-      <div class="collection-card">
-        <img src="./images/image3.jpg" alt="Thriller Edge" class="collection-img">
-        <div class="collection-overlay">
-          <h4>Thriller Edge</h4>
-          <p>Heart-Pounding Suspense</p>
-          <button class="btn btn-sm btn-danger">Explore →</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="container py-4" aria-labelledby="cinesketch-title">
-    <style>
-        .cinesketch-card{background:linear-gradient(135deg,rgba(20,20,20,0.98),rgba(35,35,35,0.98));border:1px solid rgba(255,255,255,0.08);padding:20px;border-radius:12px;box-shadow:0 12px 30px rgba(0,0,0,0.75)}
-        .cinesketch-btn{min-width:160px}
-        .cinesketch-prompt{font-style:italic;color:#ffffff}
-    </style>
-
-    <div class="cinesketch-card d-flex flex-column flex-md-row gap-3 align-items-start">
-        <div class="flex-grow-1">
-            <h3 id="cinesketch-title" class="mb-2" style="color:#fff;margin:0">CineSketch — 60‑Second Scene</h3>
-            <p class="mb-2 text-white">A tiny creative warm‑up: click to receive a one‑line seed for a short scene. Perfect for sketching, quick film exercises, or watching with a new eye.</p>
-
-            <div class="d-flex gap-2 mb-2">
-                <button id="csGenerate" class="btn btn-outline-light cinesketch-btn">Get a Scene Seed</button>
-                <button id="csRandomize" class="btn btn-light">Surprise Me</button>
-            </div>
-
-            <p id="csPrompt" class="cinesketch-prompt mb-0">Press "Get a Scene Seed" to begin.</p>
-        </div>
-
-        <div style="min-width:220px;display:flex;flex-direction:column;gap:8px">
-            <div class="text-white small">Try:</div>
-            <ul class="small mb-0" style="color:#ffffff">
-                <li>Write a 6‑line exchange between strangers on a bus.</li>
-                <li>Describe a silent 10‑second reveal without dialogue.</li>
-                <li>Pick an ordinary object and make it the scene's secret.</li>
+        <div class="collapse navbar-collapse" id="menu">
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a class="nav-link" href="#hero-section" id="navHome">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#popular-section" id="navMovies">Movies</a></li>
+                <li class="nav-item"><a class="nav-link" href="#trending-section" id="navSeries">Series</a></li>
+                <li class="nav-item"><a class="nav-link" href="#faq-section" id="navFaq">FAQ</a></li>
+                <!-- Feature 3 — Theme Toggle -->
+                <li class="nav-item ms-2">
+                    <button id="themeToggleBtn" class="btn btn-outline-light btn-sm">&#9728; Light Mode</button>
+                </li>
+                <li class="nav-item ms-2">
+                    <a class="btn btn-danger" href="#email-section" id="navSignIn">Sign In</a>
+                </li>
             </ul>
         </div>
-    </div>
-</section>
+    </nav>
 
 
-<section class="capsule-section py-5">
-    <div class="container">
-        <h2 class="text-center text-white mb-3">Film Time Capsule</h2>
-        <p class="text-center text-white mb-4">
-            Capture a movie moment — leave a short memory, recommendation, or nostalgic note.
-        </p>
+    <!-- ============================================================
+     HERO SECTION
+     ============================================================ -->
+    <header class="hero-section text-white d-flex align-items-center" id="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Unlimited Entertainment</h1>
+            <p class="lead">Watch movies and shows anytime, anywhere.</p>
+            <!-- Feature 1 — Join Now triggers modal -->
+            <button id="joinNowBtn" class="btn btn-danger btn-lg">Join Now</button>
+        </div>
+    </header>
 
-        <div class="row align-items-start">
-            <div class="col-md-5 mb-3">
-                <div class="capsule-card p-4 rounded-3">
-                    <h4 class="mb-2 text-white">Create a Capsule</h4>
-                    <form class="mt-3">
-                        <input class="form-control mb-2 bg-transparent text-white border-secondary" placeholder="Movie title" required>
-                        <input class="form-control mb-2 bg-transparent text-white border-secondary" placeholder="Year" required>
-                        <textarea class="form-control mb-2 bg-transparent text-white border-secondary" rows="3" placeholder="Why this film matters..." required></textarea>
-                        <button class="btn btn-outline-light">Save to Capsule</button>
-                    </form>
-                    <p class="small text-secondary mt-3">Stored locally for demo purposes.</p>
-                </div>
+
+    <!-- ============================================================
+     POPULAR SLIDER
+     ============================================================ -->
+    <section class="container-fluid py-5 slider-section" id="popular-section">
+        <h3 class="text-white px-4 d-flex align-items-center gap-2"><span></span> Popular on NETFLIX</h3>
+        <div class="movie-slider px-4">
+            <div class="movie-item">
+                <img src="./images/movie1.webp" alt="Movie">
+                <div class="movie-badge">New</div>
             </div>
+            <div class="movie-item">
+                <img src="./images/movie4.webp" alt="Movie">
+                <div class="movie-badge">Top 10</div>
+            </div>
+            <div class="movie-item">
+                <img src="./images/movie7.webp" alt="Movie">
+            </div>
+            <div class="movie-item">
+                <img src="./images/movie9.webp" alt="Movie">
+                <div class="movie-badge">Trending</div>
+            </div>
+            <div class="movie-item">
+                <img src="./images/movie3.webp" alt="Movie">
+            </div>
+            <div class="movie-item">
+                <img src="./images/movie8.webp" alt="Movie">
+                <div class="movie-badge">Top 10</div>
+            </div>
+            <div class="movie-item">
+                <img src="./images/movie2.webp" alt="Movie">
+            </div>
+            <div class="movie-item">
+                <img src="./images/movie5.webp" alt="Movie">
+            </div>
+            <div class="movie-item">
+                <img src="./images/movei6.webp" alt="Movie">
+                <div class="movie-badge">New</div>
+            </div>
+            <div class="movie-item">
+                <img src="./images/movie10.webp" alt="Movie">
+            </div>
+        </div>
+    </section>
 
-            <div class="col-md-7">
-                <div class="capsule-grid">
-                    <article class="capsule bg-dark text-white p-3 rounded-3">
-                        <h5>The Midnight Bike</h5>
-                        <small class="text-secondary">1999</small>
-                        <p class="mt-2 mb-0">Watched during a thunderstorm — comfort film.</p>
-                    </article>
 
-                    <article class="capsule bg-dark text-white p-3 rounded-3">
-                        <h5>City Lights</h5>
-                        <small class="text-secondary">1931</small>
-                        <p class="mt-2 mb-0">Silent scenes made me notice small things.</p>
-                    </article>
+    <!-- ============================================================
+     TRENDING SLIDER
+     ============================================================ -->
+    <section class="container-fluid pb-5 slider-section" id="trending-section">
+        <h3 class="text-white px-4 d-flex align-items-center gap-2"><span></span> Trending Now</h3>
+        <div class="movie-slider px-4">
+            <div class="movie-item">
+                <img src="./images/m1.jpg" alt="Movie">
+                <div class="movie-badge">Trending</div>
+            </div>
+            <div class="movie-item">
+                <img src="./images/m2.jpg" alt="Movie">
+                <div class="movie-badge">Top 5</div>
+            </div>
+            <div class="movie-item">
+                <img src="./images/m9.jpg" alt="Movie">
+            </div>
+            <div class="movie-item">
+                <img src="./images/m8.webp" alt="Movie">
+                <div class="movie-badge">Top 5</div>
+            </div>
+            <div class="movie-item">
+                <img src="./images/m10.jpg" alt="Movie">
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+     TONIGHT'S PICK
+     ============================================================ -->
+    <section class="container py-5" id="tonights-pick">
+        <h2 class="section-title mb-4">&#127916; Tonight's Pick</h2>
+
+        <div class="pick-card-upgraded d-flex align-items-center gap-4 position-relative">
+            <div class="badge-trending position-absolute" style="top:15px;right:15px">TRENDING</div>
+            <img src="./images/movie7.webp" alt="Jolly LLB 3 poster" class="pick-poster">
+
+            <div class="pick-content">
+                <div class="d-flex align-items-center gap-2 mb-2">
+                    <h3 style="margin:0">Jolly LLB 3</h3>
+                    <span class="badge-rating">&#11088; 8.2/10</span>
+                </div>
+
+                <div class="d-flex gap-2 mb-3">
+                    <span class="badge-quality">4K</span>
+                    <span class="badge-quality">HD</span>
+                    <span class="badge-quality">Dolby</span>
+                </div>
+
+                <p class="text-muted">
+                    "A sharp-witted lawyer returns to the courtroom to fight corruption, challenge powerful forces,
+                    and prove that justice can still prevail."
+                </p>
+
+                <div class="d-flex gap-3 mt-3">
+                    <!-- Feature 1 — Watch Now triggers modal -->
+                    <button id="watchNowBtn" class="btn btn-danger btn-lg">&#9654; Watch Now</button>
+                    <!-- Feature 1 — My List toggles state -->
+                    <button id="myListBtn" class="btn btn-outline-light btn-lg">+ My List</button>
+                </div>
+
+                <div class="mt-3 d-flex gap-3">
+                    <div class="text-info small">&#128250; Drama, Thriller</div>
+                    <div class="text-info small">&#9201; 2h 15m</div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 
-<section class="faq-section py-5">
-    <div class="container">
-        <h2 class="text-center text-white mb-4">Frequently Asked Questions</h2>
+    <!-- ============================================================
+     FEATURED COLLECTIONS
+     ============================================================ -->
+    <section class="container py-5 featured-collections" id="collections-section">
+        <h2 class="section-title mb-5">Featured Collections</h2>
 
-        <div class="accordion accordion-flush" id="faqAccordion">
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="collection-card">
+                    <img src="./images/image2.jpg" alt="Award Winners Collection" class="collection-img">
+                    <div class="collection-overlay">
+                        <h4>Award Winners</h4>
+                        <p>Oscar &amp; BAFTA Nominated Hits</p>
+                        <button class="btn btn-sm btn-danger">Explore &rarr;</button>
+                    </div>
+                </div>
+            </div>
 
-            <div class="accordion-item bg-dark text-white">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed bg-dark text-white" data-bs-toggle="collapse" data-bs-target="#faq1">
+            <div class="col-md-6 col-lg-3">
+                <div class="collection-card">
+                    <img src="./images/image1.jpg" alt="International Hits" class="collection-img">
+                    <div class="collection-overlay">
+                        <h4>International Hits</h4>
+                        <p>World Cinema Excellence</p>
+                        <button class="btn btn-sm btn-danger">Explore &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="collection-card">
+                    <img src="./images/image4.jpg" alt="Comedy Night" class="collection-img">
+                    <div class="collection-overlay">
+                        <h4>Comedy Night</h4>
+                        <p>Laugh Out Loud Collection</p>
+                        <button class="btn btn-sm btn-danger">Explore &rarr;</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3">
+                <div class="collection-card">
+                    <img src="./images/image3.jpg" alt="Thriller Edge" class="collection-img">
+                    <div class="collection-overlay">
+                        <h4>Thriller Edge</h4>
+                        <p>Heart-Pounding Suspense</p>
+                        <button class="btn btn-sm btn-danger">Explore &rarr;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+     CINESKETCH — Scene Seed Generator  (Feature 6 — DOM Manipulation)
+     ============================================================ -->
+    <section class="container py-4" aria-labelledby="cinesketch-title" id="cinesketch-section">
+        <style>
+            .cinesketch-card {
+                background: linear-gradient(135deg, rgba(20, 20, 20, 0.98), rgba(35, 35, 35, 0.98));
+                border: 1px solid rgba(255, 255, 255, 0.08);
+                padding: 20px;
+                border-radius: 12px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.75)
+            }
+
+            .cinesketch-btn {
+                min-width: 160px
+            }
+
+            .cinesketch-prompt {
+                font-style: italic;
+                color: #ffffff
+            }
+        </style>
+
+        <div class="cinesketch-card d-flex flex-column flex-md-row gap-3 align-items-start">
+            <div class="flex-grow-1">
+                <h3 id="cinesketch-title" class="mb-2" style="color:#fff;margin:0">CineSketch &#8212; 60&#8209;Second
+                    Scene</h3>
+                <p class="mb-2 text-white">A tiny creative warm&#8209;up: click to receive a one&#8209;line seed for a
+                    short scene. Perfect for sketching, quick film exercises, or watching with a new eye.</p>
+
+                <div class="d-flex gap-2 mb-2">
+                    <button id="csGenerate" class="btn btn-outline-light cinesketch-btn">Get a Scene Seed</button>
+                    <button id="csRandomize" class="btn btn-light">Surprise Me</button>
+                </div>
+
+                <p id="csPrompt" class="cinesketch-prompt mb-0">Press "Get a Scene Seed" to begin.</p>
+            </div>
+
+            <div style="min-width:220px;display:flex;flex-direction:column;gap:8px">
+                <div class="text-white small">Try:</div>
+                <ul class="small mb-0" style="color:#ffffff">
+                    <li>Write a 6&#8209;line exchange between strangers on a bus.</li>
+                    <li>Describe a silent 10&#8209;second reveal without dialogue.</li>
+                    <li>Pick an ordinary object and make it the scene's secret.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+     FILM TIME CAPSULE  (Feature 7 Bonus — localStorage)
+     ============================================================ -->
+    <section class="capsule-section py-5" id="capsule-section">
+        <div class="container">
+            <h2 class="text-center text-white mb-3">Film Time Capsule</h2>
+            <p class="text-center text-white mb-4">
+                Capture a movie moment &#8212; leave a short memory, recommendation, or nostalgic note.
+            </p>
+
+            <div class="row align-items-start">
+                <div class="col-md-5 mb-3">
+                    <div class="capsule-card p-4 rounded-3">
+                        <h4 class="mb-2 text-white">Create a Capsule</h4>
+                        <!-- IDs added for JS access -->
+                        <form id="capsuleForm" class="mt-3" novalidate>
+                            <input id="capsuleTitle"
+                                class="form-control mb-2 bg-transparent text-white border-secondary"
+                                placeholder="Movie title" required>
+                            <input id="capsuleYear" class="form-control mb-2 bg-transparent text-white border-secondary"
+                                placeholder="Year" required>
+                            <textarea id="capsuleMemory"
+                                class="form-control mb-2 bg-transparent text-white border-secondary" rows="3"
+                                placeholder="Why this film matters..." required></textarea>
+                            <div class="d-flex gap-2">
+                                <button type="submit" class="btn btn-outline-light">Save to Capsule</button>
+                                <button type="button" id="capsuleClear" class="btn btn-outline-danger btn-sm">Clear
+                                    All</button>
+                            </div>
+                            <!-- Dynamic feedback message -->
+                            <p id="capsuleMsg" class="small mt-2 mb-0"></p>
+                        </form>
+                        <p class="small text-secondary mt-3">Stored locally in your browser.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-7">
+                    <!-- capsuleGrid — static demo capsules + dynamic ones appended by JS -->
+                    <div class="capsule-grid" id="capsuleGrid">
+                        <article class="capsule bg-dark text-white p-3 rounded-3">
+                            <h5>The Midnight Bike</h5>
+                            <small class="text-secondary">1999</small>
+                            <p class="mt-2 mb-0">Watched during a thunderstorm &#8212; comfort film.</p>
+                        </article>
+
+                        <article class="capsule bg-dark text-white p-3 rounded-3">
+                            <h5>City Lights</h5>
+                            <small class="text-secondary">1931</small>
+                            <p class="mt-2 mb-0">Silent scenes made me notice small things.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+     FAQ SECTION  (Feature 4 — Show / Hide with Vanilla JS)
+     ============================================================ -->
+    <section class="faq-section py-5" id="faq-section">
+        <div class="container">
+            <h2 class="text-center text-white mb-4">Frequently Asked Questions</h2>
+
+            <div class="faq-list">
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
                         What is Netflix?
+                        <span class="faq-icon">+</span>
                     </button>
-                </h2>
-                <div id="faq1" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        Netflix is a streaming service that offers a wide variety of award-winning TV shows, movies, documentaries, and more on thousands of internet-connected devices.
+                    <div class="faq-answer">
+                        <p>Netflix is a streaming service that offers a wide variety of award-winning TV shows,
+                            movies, documentaries, and more on thousands of internet-connected devices.</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="accordion-item bg-dark text-white">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed bg-dark text-white" data-bs-toggle="collapse" data-bs-target="#faq2">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
                         Is this a real streaming service?
+                        <span class="faq-icon">+</span>
                     </button>
-                </h2>
-                <div id="faq2" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        This website is a Netflix-inspired demo created for educational purposes only. It does not stream real content or provide subscriptions.
+                    <div class="faq-answer">
+                        <p>This website is a Netflix-inspired demo created for educational purposes only.
+                            It does not stream real content or provide subscriptions.</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="accordion-item bg-dark text-white">
-                <h2 class="accordion-header">
-                    <button class="accordion-button collapsed bg-dark text-white" data-bs-toggle="collapse" data-bs-target="#faq3">
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
                         Can I use this on phone or tablet?
+                        <span class="faq-icon">+</span>
                     </button>
-                </h2>
-                <div id="faq3" class="accordion-collapse collapse">
-                    <div class="accordion-body">
-                        Yes. This website is fully responsive and works smoothly on mobile phones, tablets, laptops, and desktops using modern web technologies.
+                    <div class="faq-answer">
+                        <p>Yes. This website is fully responsive and works smoothly on mobile phones,
+                            tablets, laptops, and desktops using modern web technologies.</p>
                     </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        How do I cancel my subscription?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You can cancel anytime from your Account page. There are no cancellation fees &#8212;
+                            start or stop your membership at any time.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ============================================================
+     FOOTER — Email Form  (Feature 2 — Form Validation)
+     ============================================================ -->
+    <section class="bg-dark text-light pt-5 pb-4" id="email-section">
+        <div class="container">
+
+            <div class="row justify-content-center mb-4">
+                <div class="col-12 col-md-10 text-center">
+                    <p class="h5 mb-3">
+                        Ready to watch? Enter your email to create or restart your membership.
+                    </p>
+                    <!-- Feature 2 — validated form -->
+                    <form id="emailForm" class="d-flex flex-column align-items-center" novalidate>
+                        <div class="input-group input-group-lg w-75 w-md-50">
+                            <input type="email" id="emailInput"
+                                class="form-control bg-secondary bg-opacity-10 text-light border-secondary"
+                                placeholder="Email address" aria-label="Email address">
+                            <button class="btn btn-danger ms-2" type="submit">
+                                Get Started &rarr;
+                            </button>
+                        </div>
+                        <!-- Dynamic error / success messages -->
+                        <p id="emailError" class="email-error   mt-2 mb-0"></p>
+                        <p id="emailSuccess" class="email-success mt-2 mb-0"></p>
+                    </form>
                 </div>
             </div>
 
-        </div>
-    </div>
-</section>
-<section class="bg-dark text-light pt-5 pb-4">
-    <div class="container">
-
-        
-        <div class="row justify-content-center mb-4">
-            <div class="col-12 col-md-10 text-center">
-                <p class="h5 mb-3">
-                    Ready to watch? Enter your email to create or restart your membership.
-                </p>
-                <form class="d-flex justify-content-center" role="search">
-                    <div class="input-group input-group-lg w-75 w-md-50">
-                        <input type="email"
-                               class="form-control bg-secondary bg-opacity-10 text-light border-secondary"
-                               placeholder="Email address"
-                               aria-label="Email address">
-                        <button class="btn btn-danger ms-2" type="submit">
-                            Get Started &rarr;
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-
-       
-        <div class="row mb-4">
-            <div class="col-12">
-                <p class="mb-0">
-                    Questions? Call
-                    <a href="tel:0008009191743"
-                       class="text-decoration-underline text-secondary">
-                        000-800-919-1743
-                    </a>
-                </p>
-            </div>
-        </div>
-
-        
-        <div class="row row-cols-2 row-cols-md-4 g-3 mb-4">
-            <div class="col">
-                <ul class="list-unstyled">
-                    <li><a class="text-secondary text-decoration-underline" href="#">FAQ</a></li>
-                    <li><a class="text-secondary text-decoration-underline" href="#">Investor Relations</a></li>
-                    <li><a class="text-secondary text-decoration-underline" href="#">Privacy</a></li>
-                    <li><a class="text-secondary text-decoration-underline" href="#">Speed Test</a></li>
-                </ul>
+            <div class="row mb-4">
+                <div class="col-12">
+                    <p class="mb-0">
+                        Questions? Call
+                        <a href="tel:0008009191743" class="text-decoration-underline text-secondary">
+                            000-800-919-1743
+                        </a>
+                    </p>
+                </div>
             </div>
 
-            <div class="col">
-                <ul class="list-unstyled">
-                    <li><a class="text-secondary text-decoration-underline" href="#">Help Centre</a></li>
-                    <li><a class="text-secondary text-decoration-underline" href="#">Jobs</a></li>
-                    <li><a class="text-secondary text-decoration-underline" href="#">Cookie Preferences</a></li>
-                    <li><a class="text-secondary text-decoration-underline" href="#">Legal Notices</a></li>
-                </ul>
-            </div>
-
-            <div class="col">
-                <ul class="list-unstyled">
-                    <li><a class="text-secondary text-decoration-underline" href="#">Account</a></li>
-                    <li><a class="text-secondary text-decoration-underline" href="#">Ways to Watch</a></li>
-                    <li><a class="text-secondary text-decoration-underline" href="#">Corporate Information</a></li>
-                    <li><a class="text-secondary text-decoration-underline" href="#">Only on Netflix</a></li>
-                </ul>
-            </div>
-
-            <div class="col">
-                <ul class="list-unstyled">
-                    <li><a class="text-secondary text-decoration-underline" href="#">Media Centre</a></li>
-                    <li><a class="text-secondary text-decoration-underline" href="#">Terms of Use</a></li>
-                    <li><a class="text-secondary text-decoration-underline" href="#">Contact Us</a></li>
-                </ul>
-            </div>
-        </div>
-
-      
-        <div class="row align-items-center mb-3">
-            <div class="col-auto">
-                <div class="dropdown">
-                    <button class="btn btn-outline-secondary dropdown-toggle"
-                            type="button"
-                            data-bs-toggle="dropdown">
-                        🌐 English
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><button class="dropdown-item">English</button></li>
-                        <li><button class="dropdown-item">हिंदी</button></li>
-                        <li><button class="dropdown-item">Español</button></li>
+            <div class="row row-cols-2 row-cols-md-4 g-3 mb-4">
+                <div class="col">
+                    <ul class="list-unstyled">
+                        <li><a class="text-secondary text-decoration-underline" href="#">FAQ</a></li>
+                        <li><a class="text-secondary text-decoration-underline" href="#">Investor Relations</a></li>
+                        <li><a class="text-secondary text-decoration-underline" href="#">Privacy</a></li>
+                        <li><a class="text-secondary text-decoration-underline" href="#">Speed Test</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="list-unstyled">
+                        <li><a class="text-secondary text-decoration-underline" href="#">Help Centre</a></li>
+                        <li><a class="text-secondary text-decoration-underline" href="#">Jobs</a></li>
+                        <li><a class="text-secondary text-decoration-underline" href="#">Cookie Preferences</a></li>
+                        <li><a class="text-secondary text-decoration-underline" href="#">Legal Notices</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="list-unstyled">
+                        <li><a class="text-secondary text-decoration-underline" href="#">Account</a></li>
+                        <li><a class="text-secondary text-decoration-underline" href="#">Ways to Watch</a></li>
+                        <li><a class="text-secondary text-decoration-underline" href="#">Corporate Information</a></li>
+                        <li><a class="text-secondary text-decoration-underline" href="#">Only on Netflix</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <ul class="list-unstyled">
+                        <li><a class="text-secondary text-decoration-underline" href="#">Media Centre</a></li>
+                        <li><a class="text-secondary text-decoration-underline" href="#">Terms of Use</a></li>
+                        <li><a class="text-secondary text-decoration-underline" href="#">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
-        </div>
 
-        
-        <div class="row">
-            <div class="col-12">
-                <p class="mb-1 text-secondary">Netflix India</p>
-                <small class="text-muted">
-                    This page is protected by Google reCAPTCHA to ensure you're not a bot.
-                    <a href="#" class="link-primary">Learn more.</a>
-                </small>
+            <div class="row align-items-center mb-3">
+                <div class="col-auto">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-secondary dropdown-toggle" type="button"
+                            data-bs-toggle="dropdown">
+                            &#127760; English
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><button class="dropdown-item">English</button></li>
+                            <li><button class="dropdown-item">&#2361;&#2367;&#2306;&#2342;&#2368;</button></li>
+                            <li><button class="dropdown-item">Espa&#241;ol</button></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <p class="mb-1 text-secondary">Netflix India</p>
+                    <!-- Visit counter — localStorage bonus -->
+                    <p id="visitCounter" class="small text-muted mb-1"></p>
+                    <small class="text-muted">
+                        This page is protected by Google reCAPTCHA to ensure you're not a bot.
+                        <a href="#" class="link-primary">Learn more.</a>
+                    </small>
+                </div>
+            </div>
+
         </div>
+    </section>
 
-    </div>
-</section>
-
+    <!-- Bootstrap JS (for mobile navbar toggle) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Activity 2 — External JS file (mandatory) -->
+    <script src="script.js"></script>
 </body>
+
 </html>
